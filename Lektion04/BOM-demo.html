@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM - Demo</title>
+</head>
+
+<body>
+    <h1>BOM - Demo</h1>
+
+    <script>
+
+        //let person = window.prompt("Vad heter du?");
+        //window.alert("Hello " + person);
+
+        let x1 = prompt("Ange tal 1");
+        let x2 = prompt("Ange tal 2");
+        
+        // alert("Summa : " + x1 + x2); // Konkatenering
+        
+        // Typkonvertering
+        x1 = Number(x1);
+        x2 = Number(x2);
+        
+        // console är ett objekt som finns i window
+        console.log("Summa : " + x1 + x2); // OBS! Konkatenering
+        console.log("Summa : " + (x1 + x2)); // OBS! Parenteser
+
+        console.log(Math.PI);
+        console.log(Math.PI.toFixed(2));
+        console.log(Math.PI.toFixed(3));
+
+        let today = new Date();
+        console.log(today.toLocaleDateString());
+        console.log(today.toLocaleTimeString());
+
+    </script>
+</body>
+
+</html>
