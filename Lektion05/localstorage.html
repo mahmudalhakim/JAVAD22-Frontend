@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage API - Demo </title>
+</head>
+
+<body>
+    <h1>Web Storage API - Demo</h1>
+
+    <script>
+
+        localStorage.setItem("name", "Mahmud");
+        name = localStorage.getItem("name");
+        console.log(name);
+
+        localStorage.setItem("email", "Mahmud@example.com");
+        localStorage.setItem("mobile", "076-23432343");
+
+
+        for (let i = 0; i < localStorage.length; i++) {
+            console.log(localStorage.key(i));
+        }
+
+        localStorage.removeItem("mobile");
+        console.log(localStorage.getItem("mobile")); // null
+
+        console.log(localStorage);
+
+        localStorage.clear();
+
+        console.log(localStorage);
+
+        const arr = ['A', 'B', 'C'];
+        localStorage.setItem("myArr", arr);
+        // OBS! En sträng sparas!
+        // A,B,C
+
+        localStorage.setItem("myArr", JSON.stringify(arr));
+        // OBS! En sträng sparas i rätt format
+        // ["A","B","C"]
+
+        let myArr = localStorage.getItem("myArr");
+        console.log(myArr);
+        // OBS! En sträng returneras
+        // ["A","B","C"]
+        console.log(myArr[0]); // [
+
+        myArr = JSON.parse(localStorage.getItem("myArr"));
+        console.log(myArr);
+        console.log(myArr[0]); // A
+
+        // Ett JS-Objekt
+        let obj = {
+            prop1: "A",
+            prop2: "B",
+            prop3: "C",
+
+            // OBS! Egna metoder sparas inte i LocalStorage
+            test: function () {
+                console.log("TEST");
+            }
+        }
+
+        obj.test();
+        console.log(obj);
+
+        localStorage.setItem("myObj", JSON.stringify(obj));
+
+        obj = localStorage.getItem("myObj");
+        console.log(obj);
+        // OBS! En sträng
+        // {"prop1":"A","prop2":"B","prop3":"C"}
+
+        obj = JSON.parse(localStorage.getItem("myObj"));
+        console.log(obj);
+        // YES. Vi får tillbaka ett objekt
+        // Dock förlorar vi våra egna metoder t.ex.
+        obj.test();
+
+
+    </script>
+</body>
+
+</html>
